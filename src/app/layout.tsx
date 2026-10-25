@@ -33,7 +33,7 @@ const clicker_script = Clicker_Script({
 });
 
 export const metadata: Metadata = {
-  title: "Bean Scence",
+  title: "Bean Scene",
   description:
     "Discover your favorite coffee at our coffee shop. Enjoy freshly brewed coffee, delicious flavors, and a cozy atmosphere.",
   icons: {
