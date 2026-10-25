@@ -1,6 +1,8 @@
 
 
 
+
+
 import Link from "next/link"
 import Image from "next/image"
 import Button from "../components/ui/Button"
@@ -30,8 +32,18 @@ const Different = () => {
     },
   ]
 
+  // Cards are repeated twice so the scroll loops without a gap
+  const loopedFeatures = [...features, ...features]
+
   return (
     <section className="relative w-full overflow-hidden bg-[#FFFEFC] px-5 py-16 sm:px-10 lg:px-20">
+
+      <style>{`
+        @keyframes diff-marquee {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+      `}</style>
 
       {/* Coffee splash - top right */}
       <Image
@@ -39,7 +51,7 @@ const Different = () => {
         alt="Coffee splash"
         width={377}
         height={272}
-        className="pointer-events-none absolute -right-5 -top-10 z-0 h-[20vh] w-auto object-contain sm:-right-10 sm:-top-20 sm:h-[30vh] lg:h-[40vh]"
+        className="pointer-events-none absolute -right-5 -top-16 z-0 h-[20vh] w-auto object-contain sm:-right-10 sm:-top-20 sm:h-[30vh] lg:h-[40vh]"
       />
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center">
@@ -53,36 +65,39 @@ const Different = () => {
           We don’t just make your coffee, we make your day!
         </p>
 
-        {/* Feature cards */}
-        <div className="mt-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Feature cards (auto scroll) */}
+        <div className="mt-8 w-full overflow-hidden">
+          <div className="flex w-max animate-[diff-marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
 
-          {features.map((feature, index) => (
-            <div
-              key={feature.title}
-              className={`flex min-h-[200px] flex-col items-center justify-center border border-[#F9C06A]/50 px-5 py-7 text-center transition-colors duration-300 hover:bg-[#FCE6C8] sm:min-h-[250px] ${
-                index === 0 ? "bg-[#FCE6C8]/70" : "bg-[#FFF9F1]"
-              }`}
-            >
-              <div className="relative mb-5 h-20 w-20">
-                <Image
-                  src={feature.icon}
-                  alt={feature.title}
-                  fill
-                  sizes="80px"
-                  className="object-contain"
-                />
+            {loopedFeatures.map((feature, index) => (
+              <div
+                key={`${feature.title}-${index}`}
+                aria-hidden={index >= features.length}
+                className={`mr-4 flex min-h-[200px] w-[240px] shrink-0 flex-col items-center justify-center border border-[#F9C06A]/50 px-5 py-7 text-center transition-colors duration-300 hover:bg-[#FCE6C8] sm:min-h-[250px] sm:w-[280px] ${
+                  index % features.length === 0 ? "bg-[#FCE6C8]/70" : "bg-[#FFF9F1]"
+                }`}
+              >
+                <div className="relative mb-5 h-20 w-20">
+                  <Image
+                    src={feature.icon}
+                    alt={feature.title}
+                    fill
+                    sizes="80px"
+                    className="object-contain"
+                  />
+                </div>
+
+                <h2 className="font-playfair_display text-xl font-bold text-[#603809] sm:text-2xl">
+                  {feature.title}
+                </h2>
+
+                <p className="mt-2 max-w-[190px] font-playfair_display text-base leading-6 text-[#707070] sm:text-lg">
+                  {feature.description}
+                </p>
               </div>
+            ))}
 
-              <h2 className="font-playfair_display text-xl font-bold text-[#603809] sm:text-2xl">
-                {feature.title}
-              </h2>
-
-              <p className="mt-2 max-w-[190px] font-playfair_display text-base leading-6 text-[#707070] sm:text-lg">
-                {feature.description}
-              </p>
-            </div>
-          ))}
-
+          </div>
         </div>
 
         {/* Bottom CTA */}
@@ -110,9 +125,4 @@ const Different = () => {
 }
 
 export default Different
-
-
-
-
-
 
