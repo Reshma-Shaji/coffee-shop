@@ -78,5 +78,24 @@ body {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+@keyframes diff-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.diff-marquee {
+  animation: diff-marquee 30s linear infinite;
+}
+
+/* pause on hover only for devices that really have a mouse */
+@media (hover: hover) {
+  .diff-marquee:hover {
+    animation-play-state: paused;
+  }
+}
 
 

@@ -38,12 +38,7 @@ const Different = () => {
   return (
     <section className="relative w-full overflow-hidden bg-[#FFFEFC] px-5 py-16 sm:px-10 lg:px-20">
 
-      <style>{`
-        @keyframes diff-marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-      `}</style>
+     
 
       {/* Coffee splash - top right */}
       <Image
@@ -67,8 +62,7 @@ const Different = () => {
 
         {/* Feature cards (auto scroll) */}
         <div className="mt-8 w-full overflow-hidden">
-          <div className="flex w-max animate-[diff-marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
-
+<div className="diff-marquee flex w-max">
             {loopedFeatures.map((feature, index) => (
               <div
                 key={`${feature.title}-${index}`}
