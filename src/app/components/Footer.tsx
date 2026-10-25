@@ -291,13 +291,13 @@ const Footer = () => {
               <Link href="/menu" className="transition-colors hover:text-[#F9C06A]">
                 Menu
               </Link>
-              <Link href="/about" className="transition-colors hover:text-[#F9C06A]">
+              <Link href="/About" className="transition-colors hover:text-[#F9C06A]">
                 About
               </Link>
-              <Link href="/reserve" className="transition-colors hover:text-[#F9C06A]">
+              <Link href="/table-booking" className="transition-colors hover:text-[#F9C06A]">
                 Reserve
               </Link>
-              <Link href="/contact" className="transition-colors hover:text-[#F9C06A]">
+              <Link href="/Contact" className="transition-colors hover:text-[#F9C06A]">
                 Contact
               </Link>
             </div>
