@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-playfair_display: var(--font-playfair_display);
+    --font-clicker_script: var(--font-clicker_script);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,3 +26,57 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes handWriteStroke {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    opacity: 0.1;
+  }
+  30% {
+    clip-path: polygon(0 0, 40% 0, 35% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 40% 0, 35% 100%, 0 100%);
+    opacity: 0.7;
+  }
+  60% {
+    clip-path: polygon(0 0, 75% 0, 70% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 75% 0, 70% 100%, 0 100%);
+    opacity: 0.9;
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 1;
+  }
+}
+
+.animate-handwriting {
+  display: inline-block !important;
+  animation: handWriteStroke 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+  will-change: clip-path, opacity !important;
+}
+
+
+@keyframes cupFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1.5deg);
+  }
+}
+
+.animate-cup-float {
+  display: inline-block !important;
+  animation: cupFloat 4s ease-in-out infinite !important;
+  will-change: transform !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+
