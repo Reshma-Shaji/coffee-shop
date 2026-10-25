@@ -74,11 +74,7 @@ const About = () => {
                         </p>
                     </FadeIn>
 
-                    <FadeIn delay={0.3}>
-                        <Button textSize="sm">
-                            <Link href={"/About"}>Read Our Story</Link>
-                        </Button>
-                    </FadeIn>
+                   
                 </div>
 
                 {/* Stats */}

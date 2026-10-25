@@ -29,7 +29,7 @@ const Discover = () => {
                     </ScrollDarkenParagraph>
    
                     <Button textSize="sm"> 
-                        <Link href={"/about"}>
+                        <Link href={"/About"}>
                             Learn More
                         </Link>
                     </Button>
